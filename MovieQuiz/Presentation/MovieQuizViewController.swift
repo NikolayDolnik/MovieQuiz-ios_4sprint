@@ -119,10 +119,10 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
         }
         statisticService.store(correct: correctAnswer, total: questionsAmount)
         let accuracy = String(format: "%.2f", statisticService.totalAccuracy)
-        let text = "Ваш результат: \(correctAnswer) из \(questionsAmount) \n Количество сыгранных квизов: \(statisticService.gamesCount) \n Рекорд:\(bestGame.correct)/\(questionsAmount) (\(bestGame.date.dateTimeString)) \n Средняя точность \(accuracy)%"
+        let text = "Ваш результат: \(correctAnswer)/\(questionsAmount) \n Количество сыгранных квизов: \(statisticService.gamesCount) \n Рекорд:\(bestGame.correct)/\(questionsAmount) (\(bestGame.date.dateTimeString)) \n Средняя точность \(accuracy)%"
         
         let viewModel = AlertModel(
-            title: "Этот раунд окончен",
+            title: "Этот раунд окончен!",
             massage: text,
             buttonText: "Сыграть еще раз",
             completion: {self.currentQuestionIndex = 0
