@@ -11,12 +11,6 @@ struct GameRecord: Codable {
     let correct: Int
     let total: Int
     let date: Date
-  
-    /* моя функция
-    func bestResult (record: GameRecord ) -> GameRecord  {
-        bestGame.correct > record.correct ?? return bestGame : return bestGame = record.correct
-    }
-   */
 }
 
 extension GameRecord: Comparable {

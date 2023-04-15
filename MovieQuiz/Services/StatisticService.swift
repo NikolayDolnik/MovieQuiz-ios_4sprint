@@ -81,11 +81,9 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
     }
     
     
-   // func store(correct count: Int, total amount: Int) {
-        func store(correct: Int, total: Int) {
+    func store(correct: Int, total: Int) {
         self.correct += correct
         self.total += total
-        // было self.gamesCount += gamesCount
         self.gamesCount += 1
         
         let date = dateProvider()

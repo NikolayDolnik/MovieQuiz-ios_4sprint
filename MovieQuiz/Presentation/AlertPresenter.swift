@@ -16,12 +16,7 @@ final class AlertPresenter: AlertPresenterProtocol {
     
     
     func showAlert(alertModel: AlertModel) {
-       /*сделать опционал?
-        guard let alertModel = alertModel else{
-            return
-        }
-        */
-        
+    
         let alert = UIAlertController(title: alertModel.title, message: alertModel.massage, preferredStyle: .alert)
         let action = UIAlertAction(title: alertModel.buttonText, style: .default) { _ in
             alertModel.completion()

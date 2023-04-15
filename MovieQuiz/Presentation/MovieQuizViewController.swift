@@ -77,34 +77,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
         noButton.isEnabled = true
     }
     
-    /*
-     private func show(quiz result: QuizResultsViewModel) {
-     
-     statisticService.store(correct count: correctAnswer, total amount: questionsAmount)
-     let text = "Ваш результат: \(correctAnswer) из 10 \n Количество сыгранных квизов: \(counterQuiz) \n Рекорд:\(recordQuiz) (\(dateRecord ?? dateNow)) \n Средняя точность \(accuracy)%"
-     
-     let viewModel = AlertModel(
-     title: "Этот раунд окончен",
-     massage: text,
-     buttonText: "Сыграть еще раз",
-     completion: {self.currentQuestionIndex = 0
-     self.correctAnswer = 0
-     self.questionFactory?.requestNextQuestion()})
-     alertPresenter?.showAlert(alertModel: viewModel)
-     
-     let alert = UIAlertController(title: result.title, message: result.text, preferredStyle: .alert)
-     let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
-     guard let self = self else {return}
-     self.currentQuestionIndex = 0
-     self.correctAnswer = 0
-     self.questionFactory?.requestNextQuestion()
-     }
-     
-     alert.addAction(action)
-     self.present(alert: alert)
-     }
-     */
-    
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         return  QuizStepViewModel(
             image: UIImage(named: model.image) ?? UIImage(),
