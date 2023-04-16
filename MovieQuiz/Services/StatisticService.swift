@@ -13,6 +13,7 @@ protocol StatisticServiceProtocol {
     var bestGame: GameRecord? { get }
     
     func store(correct count: Int, total amount: Int)
+    func cleanUserDefaults ()
 }
 
 
@@ -35,7 +36,7 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
         get {
             guard let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
             let bestGame = try? JSONDecoder().decode(GameRecord.self, from: data) else {
-                return .init(correct: 120, total: 0, date: Date())
+                return .init(correct: 0, total: 0, date: Date())
             }
             return bestGame
         }
@@ -95,5 +96,11 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
             }} else {
                 bestGame = currentBestGame
             }
+    }
+    
+    func cleanUserDefaults () {
+        let date = dateProvider()
+        let zeroGame = GameRecord(correct: 0, total: 0, date: date)
+        bestGame = zeroGame
     }
 }

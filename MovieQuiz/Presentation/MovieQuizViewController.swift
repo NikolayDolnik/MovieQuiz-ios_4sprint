@@ -114,12 +114,18 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
         guard let statisticService = statisticService else {
             return assertionFailure("error message")
         }
+        statisticService.store(correct: correctAnswer, total: questionsAmount)
+        // очистил данные лучшей игры statisticService.cleanUserDefaults()
         guard let bestGame = statisticService.bestGame else {
             return assertionFailure("error message")
         }
-        statisticService.store(correct: correctAnswer, total: questionsAmount)
         let accuracy = String(format: "%.2f", statisticService.totalAccuracy)
-        let text = "Ваш результат: \(correctAnswer)/\(questionsAmount) \n Количество сыгранных квизов: \(statisticService.gamesCount) \n Рекорд:\(bestGame.correct)/\(questionsAmount) (\(bestGame.date.dateTimeString)) \n Средняя точность \(accuracy)%"
+        let text = """
+            Ваш результат: \(correctAnswer)/\(questionsAmount)
+            Количество сыгранных квизов: \(statisticService.gamesCount)
+            Рекорд:\(bestGame.correct)/\(questionsAmount) (\(bestGame.date.dateTimeString))
+            Средняя точность \(accuracy)%
+        """
         
         let viewModel = AlertModel(
             title: "Этот раунд окончен!",
