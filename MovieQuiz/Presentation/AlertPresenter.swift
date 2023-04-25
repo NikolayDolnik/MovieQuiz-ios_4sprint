@@ -21,6 +21,7 @@ final class AlertPresenter: AlertPresenterProtocol {
         let action = UIAlertAction(title: alertModel.buttonText, style: .default) { _ in
             alertModel.completion()
         }
+        alert.view.accessibilityIdentifier = "Game results"
          alert.addAction(action)
         delegate?.present(alert: alert)
     }
